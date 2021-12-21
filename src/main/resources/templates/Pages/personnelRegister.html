@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Login.css}">
+    <title>Personel Kayıt</title>
+</head>
+<body>
+<div class="bgimg w3-display-container w3-text-white"></div>
+<div id="navbar" class="w3-bar w3-theme-d2 w3-left-align">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" ><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Anasayfa</a>
+    <a href="/personnel/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Giriş</a>
+    <a href="/dashboard/login" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Dashboard</a>
+</div>
+
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>Hesap Oluştur</h1>
+            <input type="name" placeholder="Name" />
+            <input type="email" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <button>Hesap Oluştur</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Merhaba</h1>
+                <p>Üye isenin giriş yapmak için tıklayınız</p>
+                <a href="/personnel/login" class="ghost" id="signUp">Giriş Yap</a>
+                <a href="/" class="ghost" >Anasayfa</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Login.css}">
+    <title>Personel Giriş</title>
+</head>
+<body>
+<div class="bgimg w3-display-container w3-text-white"></div>
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>Personel Giriş</h1>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="Password" />
+                <a href="#">Şifrenizi mi Unuttunuz ?</a>
+                <button>Giriş Yap</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Merhaba !</h1>
+                    <p style="font-size: 17px">Hesap Oluşturmak İçin ;</p>
+                    <a href="/personnel/register" class="ghost" id="signUp">Hesap Oluştur</a>
+                    <a href="/" class="ghost" >Anasayfa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
