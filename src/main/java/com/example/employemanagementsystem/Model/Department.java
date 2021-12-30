@@ -1,23 +1,30 @@
-package com.example.employemanagementsystem.role;
+package com.example.employemanagementsystem.Model;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "roles")
-public class Role {
+@Table(name = "department")
+public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false, length = 45)
+    @Column(length = 45, nullable = false, unique = true)
     private String name;
 
-    public Role(Integer id){
-        this.id = id;
+    public Department(){
+
     }
 
-    public Role(String name) {
+    public Department(Integer id){
+        this.id = id;
+
+    }
+
+    public Department(String name){
         this.name = name;
     }
+
+
 
     public Integer getId() {
         return id;

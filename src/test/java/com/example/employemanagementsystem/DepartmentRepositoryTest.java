@@ -1,7 +1,7 @@
 package com.example.employemanagementsystem;
 
-import com.example.employemanagementsystem.department.Department;
-import com.example.employemanagementsystem.department.DepartmentRepository;
+import com.example.employemanagementsystem.Model.Department;
+import com.example.employemanagementsystem.Repository.DepartmentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;

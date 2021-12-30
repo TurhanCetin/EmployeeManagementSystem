@@ -1,10 +1,6 @@
-package com.example.employemanagementsystem.users;
+package com.example.employemanagementsystem.Model;
 
 import javax.persistence.*;
-
-import com.example.employemanagementsystem.department.Department;
-import com.example.employemanagementsystem.role.Role;
-import org.hibernate.annotations.ManyToAny;
 
 import java.util.HashSet;
 import java.util.Set;

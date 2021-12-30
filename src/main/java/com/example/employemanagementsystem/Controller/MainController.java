@@ -1,4 +1,4 @@
-package com.example.employemanagementsystem;
+package com.example.employemanagementsystem.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +22,11 @@ public class MainController {
 
     @GetMapping("/dashboard/login")
     public String getManagerLogin(){
-        return "Dashboard/managerLogin";
+        return "Dashboard/login";
+    }
+
+    @GetMapping("/dashboard/home")
+    public String getDashboardHome(){
+        return "Dashboard/adminDashboard";
     }
 }

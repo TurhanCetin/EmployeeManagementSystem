@@ -1,7 +1,7 @@
 package com.example.employemanagementsystem;
 
-import com.example.employemanagementsystem.role.Role;
-import com.example.employemanagementsystem.role.RoleRepository;
+import com.example.employemanagementsystem.Model.Role;
+import com.example.employemanagementsystem.Repository.RoleRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
