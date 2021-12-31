@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
-    <a href="home" class="navbar-brand ps-3" style="color: white">Dashboard</a>
+    <a class="navbar-brand ps-3" style="color: white">Dashboard</a>
 
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
 
@@ -34,14 +34,6 @@
             <div class="sb-sidenav-menu">
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Yönetim</div>
-                    <a class="nav-link" href="/dashboard/role">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Roller
-                    </a>
-                    <a class="nav-link" href="/dashboard/department">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Departmanlar
-                    </a>
                 </div>
             </div>
         </nav>
@@ -53,26 +45,36 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Personel Listesi
+                        Manager Listesi
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">User İd</th>
-                                <th scope="col">E-Mail</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Roles</th>
+                                <th scope="col">#</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="user: ${listUser}">
-                                <th th:text="${user.id}" scope="row">User ID</th>
-                                <td th:text="${user.name}">Name</td>
-                                <td th:text="${user.email}">Email</td>
-                                <td th:text="${user.department}">Departman</td>
-                                <td th:text="${user.roles}">Roles</td>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>Jacob</td>
+                                <td>Thornton</td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>Larry</td>
+                                <td>the Bird</td>
+                                <td>@twitter</td>
                             </tr>
                             </tbody>
                         </table>

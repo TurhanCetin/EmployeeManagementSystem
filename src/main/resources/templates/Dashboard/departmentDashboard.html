@@ -35,10 +35,10 @@
                 <div class="nav">
                     <div class="sb-sidenav-menu-heading">Yönetim</div>
                     <a class="nav-link" href="/dashboard/role">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                        <div href="/dashboard/role" class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                         Roller
                     </a>
-                    <a class="nav-link" href="/dashboard/department">
+                    <a class="nav-link" href="/dashboard/department" >
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                         Departmanlar
                     </a>
@@ -53,26 +53,17 @@
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Personel Listesi
+                        Roller
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
-                                <th scope="col">User İd</th>
-                                <th scope="col">E-Mail</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Roles</th>
-                            </tr>
+                                <th scope="col">Roller</th>
                             </thead>
                             <tbody>
-                            <tr th:each="user: ${listUser}">
-                                <th th:text="${user.id}" scope="row">User ID</th>
-                                <td th:text="${user.name}">Name</td>
-                                <td th:text="${user.email}">Email</td>
-                                <td th:text="${user.department}">Departman</td>
-                                <td th:text="${user.roles}">Roles</td>
+                            <tr th:each="dep: ${listDepartment}">
+                                <th th:text="${dep.name}" scope="row">Department Name</th>
                             </tr>
                             </tbody>
                         </table>

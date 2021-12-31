@@ -19,7 +19,7 @@ import java.util.List;
 public class RoleRepositoryTest {
 
     @Autowired
-    private RoleRepository repo;
+    RoleRepository repo;
 
     @Test
     public void testCreateRole(){

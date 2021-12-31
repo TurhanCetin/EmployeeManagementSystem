@@ -12,23 +12,12 @@ import java.util.List;
 
 
 @Service
-public class UserService {
-    @Autowired
-    private UsersRepository userRepo;
+public class RoleService {
 
     @Autowired
     RoleRepository roleRepo;
 
-    public void saveUserWithDefaultRole(User user){
-        user.setPassword(user.getPassword());
-
-        Role roleUser = roleRepo.findByName("User");
-        user.addRole(roleUser);
-
-        userRepo.save(user);
-    }
-
-    public List<User> listAll(){
-        return userRepo.findAll();
+    public List<Role> listAll(){
+        return roleRepo.findAll();
     }
 }

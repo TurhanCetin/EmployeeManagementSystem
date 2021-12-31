@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name ="user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class User {
     private String password;
 
 
-    @ManyToMany()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -82,5 +83,10 @@ public class User {
 
     public void addRole(Role role){
         this.roles.add(role);
+    }
+
+    @Override
+    public String toString(){
+        return this.name;
     }
 }
