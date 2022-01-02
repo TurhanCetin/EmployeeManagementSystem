@@ -20,4 +20,12 @@ public class RoleService {
     public List<Role> listAll(){
         return roleRepo.findAll();
     }
+
+    public void saveRole(Role role){
+        roleRepo.save(role);
+    }
+    public void deleteRole(Integer id){
+        roleRepo.deleteById(id);
+
+    }
 }

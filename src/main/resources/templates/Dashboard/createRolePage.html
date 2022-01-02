@@ -36,11 +36,11 @@
                     <div class="sb-sidenav-menu-heading">Yönetim</div>
                     <a class="nav-link" href="/dashboard/role">
                         <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Roles
+                        Roller
                     </a>
                     <a class="nav-link" href="/dashboard/department">
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Departments
+                        Departmanlar
                     </a>
                 </div>
             </div>
@@ -51,39 +51,24 @@
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dashboard</h1>
                 <div class="card mb-4">
-                    <div th:if="${message}" class=" alert alert-success text-center">
-                        <p th:text="${message}"></p>
-                    </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
-                        Personel Listesi
+                        Add Role
                     </div>
                     <div class="card-body">
-                        <table class="table">
-                            <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">User İd</th>
-                                <th scope="col">E-Mail</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Department</th>
-                                <th scope="col">Roles</th>
-                                <th scope="col">Transactions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr th:each="user: ${listUser}">
-                                <th th:text="${user.id}" scope="row">User ID</th>
-                                <td th:text="${user.name}">Name</td>
-                                <td th:text="${user.email}">Email</td>
-                                <td th:text="${user.department}">Departman</td>
-                                <td th:text="${user.roles}">Roles</td>
-                                <td>
-                                    <a class="col-2" th:href="@{'/dashboard/personnel/edit/' + ${user.id}}">Edit</a>
-                                    <a  th:href="@{'/dashboard/personnel/delete/' + ${user.id}}">Delete</a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
+                        <form th:action="@{/role/create}" method="post" th:object="${role}">
+                            <div class="m-3">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-4">Name</label>
+                                    <div class="col-8">
+                                        <input type="text" th:field="*{name}" class="form-control">
+                                    </div>
+                                </div>
+                            <div class="form-group row">
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

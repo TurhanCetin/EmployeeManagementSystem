@@ -30,6 +30,7 @@ public class User {
 
     @ManyToOne
     @JoinColumn(name = "department_id")
+    // delete hatasını sor
     private Department department;
 
 

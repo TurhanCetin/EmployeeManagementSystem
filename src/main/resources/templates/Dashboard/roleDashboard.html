@@ -36,11 +36,11 @@
                     <div class="sb-sidenav-menu-heading">Yönetim</div>
                     <a class="nav-link" href="/dashboard/role">
                         <div href="/dashboard/role" class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Roller
+                        Roles
                     </a>
                     <a class="nav-link" href="/dashboard/department" >
                         <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Departmanlar
+                        Departments
                     </a>
                 </div>
             </div>
@@ -51,19 +51,37 @@
             <div class="container-fluid px-4">
                 <h1 class="mt-4">Dashboard</h1>
                 <div class="card mb-4">
+                    <div th:if="${message}" class="text-center alert alert-success">
+                        <!--Hata veriyor ancak ide'den kaynaklı çalışıyor-->
+                        <p th:text="${message}">success message</p>
+                    </div>
                     <div class="card-header">
                         <i class="fas fa-table me-1"></i>
                         Roller
+                        <div class="d-flex justify-content-end" style="margin-top: -23px;
+                            display: flex !important;
+                            flex-direction: row;
+                            align-items: flex-start;">
+                            <label>Add Role</label>
+                            <a style="border: none; margin-left: 10px;" href="/dashboard/role/create">
+                                <i class="fas fa-plus-circle"></i>
+                            </a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Roller</th>
+                                <th scope="col">Transactions</th>
                             </thead>
                             <tbody>
                             <tr th:each="role: ${listRole}">
-                                <th th:text="${role.name}" scope="row">User ID</th>
+                                <td th:text="${role.name}" scope="row">Role Name</td>
+                                <td>
+                                    <a class="col-2"  th:href="@{'/dashboard/role/edit/' + ${role.id}}">Edit</a>
+                                    <a th:href="@{'/dashboard/role/delete/' + ${role.id}}">Delete</a>
+                                </td>
                             </tr>
                             </tbody>
                         </table>

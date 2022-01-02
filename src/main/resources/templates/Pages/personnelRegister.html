@@ -21,9 +21,9 @@
     <div class="form-container sign-in-container">
         <form th:action="@{/personnel/save}" method="post" th:object="${user}">
             <h1>Hesap Oluştur</h1>
-            <input type="name" placeholder="Name" th:align="name"/>
-            <input type="email" placeholder="Email" th:align="email"/>
-            <input type="password" placeholder="Password" th:align="password"/>
+            <input placeholder="Name" th:field="*{name}"/>
+            <input placeholder="Email" th:field="*{email}"/>
+            <input placeholder="Password" th:field="*{password}"/>
             <button>Hesap Oluştur</button>
         </form>
     </div>
