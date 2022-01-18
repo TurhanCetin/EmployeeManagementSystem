@@ -24,6 +24,10 @@ public class UserController {
         service.saveUserWithDefaultRole(user);
         return "Pages/personnelLogin";
     }
+    @PostMapping("/personnel/login/")
+    public String userLogin(@RequestParam String email,@RequestParam String password){
+        return "/home";
+    }
 
     @PostMapping("/personnel/edit")
     public String editPersonnel(User user, RedirectAttributes redirectAttributes){
@@ -31,6 +35,8 @@ public class UserController {
         redirectAttributes.addFlashAttribute("message" , "Personnel was edit successfully");
         return "redirect:/dashboard/home";
     }
+
+
 
 
 }

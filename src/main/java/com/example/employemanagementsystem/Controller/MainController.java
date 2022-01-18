@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
@@ -21,13 +22,14 @@ public class MainController {
     @Autowired
     public UserService service;
 
-    @GetMapping("")
+    @GetMapping("/home")
     public String getHome(){
         return "home";
     }
 
     @GetMapping("/personnel/login")
-    public String getPersonnelLogin(){
+    public String getPersonnelLogin(Model model ,User user){
+        model.addAttribute("user", user);
         return "Pages/personnelLogin";
     }
 
