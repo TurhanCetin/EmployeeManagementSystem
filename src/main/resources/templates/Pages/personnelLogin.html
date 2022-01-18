@@ -12,10 +12,10 @@
 <div class="bgimg w3-display-container w3-text-white"></div>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form th:action="@{/personnel/login}" method="post" th:object="${user}">
                 <h1>Personel Giriş</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" th:field="*{email}"/>
+                <input type="password" placeholder="Password" th:field="*{password}"/>
                 <a href="#">Şifrenizi mi Unuttunuz ?</a>
                 <button>Giriş Yap</button>
             </form>

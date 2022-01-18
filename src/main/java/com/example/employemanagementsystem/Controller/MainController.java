@@ -27,7 +27,8 @@ public class MainController {
     }
 
     @GetMapping("/personnel/login")
-    public String getPersonnelLogin(){
+    public String getPersonnelLogin(Model model ,User user ){
+        model.addAttribute("user" , user);
         return "Pages/personnelLogin";
     }
 
