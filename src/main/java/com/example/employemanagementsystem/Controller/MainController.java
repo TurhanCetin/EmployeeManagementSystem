@@ -56,6 +56,12 @@ public class MainController {
         return "Pages/personnelLogin";
     }
 
+    @GetMapping("/personnel/home")
+    public String getPersonnelHome(){
+
+        return "Pages/personnelHome";
+    }
+
     @GetMapping("/personnel/register")
     public String getPersonnelRegister(Model model){
         model.addAttribute("user", new User());
@@ -107,6 +113,12 @@ public class MainController {
     public String getRoleCreate(Model model){
         model.addAttribute("role", new Role());
         return "Dashboard/createRolePage";
+    }
+
+    @GetMapping("/403")
+    public String invalidRequest(){
+
+        return "/Pages/403";
     }
 
 
