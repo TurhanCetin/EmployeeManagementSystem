@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,12 +12,12 @@
 <div class="bgimg w3-display-container w3-text-white"></div>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form th:action="@{/personnel/login}" method="post" th:object="${user}">
+            <form th:action="@{/login}" th:object="${LoginForm}" method="post">
                 <h1>Personel Giriş</h1>
-                <input type="email" placeholder="Email" th:field="*{email}"/>
-                <input type="password" placeholder="Password" th:field="*{password}"/>
-                <a href="#">Şifrenizi mi Unuttunuz ?</a>
-                <button>Giriş Yap</button>
+                <input type="email" placeholder="Email" name="email" id="email" />
+                <input type="password" placeholder="Password" name="password" id="password"/>
+                <a href="#">Forgot your password</a>
+                <button type="submit" value="Log in">Giriş Yap</button>
             </form>
         </div>
         <div class="overlay-container">
