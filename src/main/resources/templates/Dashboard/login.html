@@ -19,10 +19,10 @@
 
 <div class="container" id="container">
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form th:action="@{/dashboard/login}"  method="post" th:object="${user}">
             <h1>Yönetici Giriş</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <input type="email" placeholder="Email" th:field="*{email}"/>
+            <input type="password" placeholder="Password" th:field="*{password}" />
             <a href="#">Forgot your password?</a>
             <button>Sign In</button>
         </form>

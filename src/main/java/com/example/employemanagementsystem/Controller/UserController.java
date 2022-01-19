@@ -25,11 +25,11 @@ public class UserController {
         return "Pages/personnelLogin";
     }
 
-    @RequestMapping("/personnel/login")
+  /*  @RequestMapping("/personnel/login")
     public String getPersonnelLogin(Model model ,User user ){
         model.addAttribute("user" , user);
         return "Pages/personnelHome";
-    }
+    }*/
 
     @PostMapping("/personnel/edit")
     public String editPersonnel(User user, RedirectAttributes redirectAttributes){
