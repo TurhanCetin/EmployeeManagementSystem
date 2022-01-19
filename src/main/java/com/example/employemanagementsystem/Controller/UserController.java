@@ -52,11 +52,11 @@ public class UserController {
                 Cookie cookie = new Cookie("email", loginForm.getEmail());
                 cookie.setMaxAge(60*60*24);
                 response.addCookie(cookie);
-                Cookie  cookie1 = new Cookie("password",loginForm.getPassword());
-                response.addCookie(cookie1);
+                Cookie  cookie2 = new Cookie("password",loginForm.getPassword());
+                response.addCookie(cookie2);
                 session.setAttribute("loginManager",loginForm.getEmail());
                 Cookie[] cookies = request.getCookies();
-                return "Pages/personnelHome";
+                return "redirect:/personnel/home";
             }
         }
         return "redirect:/personnel/login";
@@ -73,8 +73,8 @@ public class UserController {
                 Cookie cookie = new Cookie("email", loginForm.getEmail());
                 cookie.setMaxAge(60*60*24);
                 response.addCookie(cookie);
-                Cookie  cookie1 = new Cookie("password",loginForm.getPassword());
-                response.addCookie(cookie1);
+                Cookie  cookie3 = new Cookie("password",loginForm.getPassword());
+                response.addCookie(cookie3);
                 session.setAttribute("loginAdmin",loginForm.getEmail());
                 Cookie[] cookies = request.getCookies();
                 return "redirect:/dashboard/home";

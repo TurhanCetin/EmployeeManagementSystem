@@ -27,7 +27,7 @@ public class MainController {
     public String getHome(){
         return "home";
     }
-
+    //Manager
     @RequestMapping(value = "/personnel/home")
     public String personnelHome(Model model, HttpSession session){
     if(session.getAttribute("loginManager") != null){
@@ -36,6 +36,7 @@ public class MainController {
     model.addAttribute("LoginForm");
     return "redirect:/personnel/login";
     }
+    //user
     @RequestMapping(value = "/user/home")
     public String userHome(Model model, HttpSession session){
     if(session.getAttribute("loginUser") != null){
@@ -56,12 +57,6 @@ public class MainController {
         model.addAttribute("listRoles",listRoles);
         model.addAttribute("LoginForm");
         return "Pages/personnelLogin";
-    }
-
-    @GetMapping("/personnel/home")
-    public String getPersonnelHome(){
-
-        return "Pages/personnelHome";
     }
 
     @GetMapping("/personnel/register")
