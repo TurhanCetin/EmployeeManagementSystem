@@ -33,9 +33,8 @@ public class UserController {
 
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute (name="loginForm") LoginForm loginForm, HttpSession session, Model model, HttpServletRequest request , HttpServletResponse response) {
+    public String login(@ModelAttribute (name="loginForm") LoginForm loginForm, HttpSession session, HttpServletRequest request , HttpServletResponse response) {
         User user = userRepo.findUserByEmail(loginForm.getEmail());
-       //String role = String.valueOf((user.getRoles()));
        String role = user.getRoles().stream().
                map(n -> String.valueOf(n))
                .collect(Collectors.joining(""));
@@ -55,9 +54,9 @@ public class UserController {
                 response.addCookie(cookie);
                 Cookie  cookie1 = new Cookie("password",loginForm.getPassword());
                 response.addCookie(cookie1);
-                session.setAttribute("loginUser",loginForm.getEmail());
+                session.setAttribute("loginManager",loginForm.getEmail());
                 Cookie[] cookies = request.getCookies();
-                return "redirect:/personnel/home";
+                return "Pages/personnelHome";
             }
         }
         return "redirect:/personnel/login";

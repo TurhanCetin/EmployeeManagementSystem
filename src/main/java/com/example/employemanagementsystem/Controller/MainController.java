@@ -30,8 +30,8 @@ public class MainController {
 
     @RequestMapping(value = "/personnel/home")
     public String personnelHome(Model model, HttpSession session){
-    if(session.getAttribute("loginUser") != null){
-        return "Pages/personnelPage";
+    if(session.getAttribute("loginManager") != null){
+        return "Pages/managerHome";
     }
     model.addAttribute("LoginForm");
     return "redirect:/personnel/login";
@@ -39,16 +39,18 @@ public class MainController {
     @RequestMapping(value = "/user/home")
     public String userHome(Model model, HttpSession session){
     if(session.getAttribute("loginUser") != null){
-        return "Pages/userHome";
+        return "Pages/personnelHome";
     }
     model.addAttribute("LoginForm");
     return "redirect:/personnel/login";
     }
 
-    @RequestMapping(value = "/personnel/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/personnel/login")
     public String getPersonnelLogin(Model model, HttpSession session, Role role){
         if(session.getAttribute("loginUser") != null){
-            return "userHome";
+            return "redirect:/user/home";
+        }else if(session.getAttribute("loginManager") !=null){
+            return "Pages/managerHome";
         }
         List<Role> listRoles = service.getRoles();
         model.addAttribute("listRoles",listRoles);
