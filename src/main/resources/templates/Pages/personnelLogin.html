@@ -12,12 +12,16 @@
 <div class="bgimg w3-display-container w3-text-white"></div>
     <div class="container" id="container">
         <div class="form-container sign-in-container">
-            <form action="#">
+            <form th:action="@{/login}" th:object="${LoginForm}" method="post">
                 <h1>Personel Giriş</h1>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
+                <input type="email" placeholder="Email" name="email" id="email" />
+                <input type="password" placeholder="Password" name="password" id="password"/>
+                <select class="form-control">
+                    <option name="User" id="User">User</option>
+                    <option name="Manager" id="Manager">Manager</option>
+                </select>
                 <a href="#">Şifrenizi mi Unuttunuz ?</a>
-                <button>Giriş Yap</button>
+                <button type="submit" value="Log in">Giriş Yap</button>
             </form>
         </div>
         <div class="overlay-container">
