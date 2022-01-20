@@ -1,6 +1,8 @@
 package com.example.employemanagementsystem.Controller;
 
 
+import com.example.employemanagementsystem.Model.Department;
+import com.example.employemanagementsystem.Model.Role;
 import com.example.employemanagementsystem.Repository.RoleRepository;
 import com.example.employemanagementsystem.Repository.UsersRepository;
 import com.example.employemanagementsystem.Service.UserService;
@@ -16,6 +18,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -33,7 +36,7 @@ public class UserController {
 
 
     @RequestMapping(value="/login", method=RequestMethod.POST)
-    public String login(@ModelAttribute (name="loginForm") LoginForm loginForm, HttpSession session, HttpServletRequest request , HttpServletResponse response) {
+    public String login(@ModelAttribute (name="loginForm") LoginForm loginForm, HttpSession session, HttpServletRequest request ,Model model, HttpServletResponse response) {
         User user = userRepo.findUserByEmail(loginForm.getEmail());
        String role = user.getRoles().stream().
                map(n -> String.valueOf(n))
@@ -47,7 +50,14 @@ public class UserController {
                 response.addCookie(cookie1);
                 session.setAttribute("loginUser",loginForm.getEmail());
                 Cookie[] cookies = request.getCookies();
-                return "redirect:/user/home";
+
+                List<Role> listRoles = service.getRoles();
+                List<Department> listDep = service.getDep();
+
+                model.addAttribute("user",user);
+                model.addAttribute("listRoles",listRoles);
+                model.addAttribute("listDep", listDep);
+                return "Pages/personnelHome";
             }else if(role.equals("Manager")){
                 Cookie cookie = new Cookie("email", loginForm.getEmail());
                 cookie.setMaxAge(60*60*24);
@@ -56,7 +66,17 @@ public class UserController {
                 response.addCookie(cookie2);
                 session.setAttribute("loginManager",loginForm.getEmail());
                 Cookie[] cookies = request.getCookies();
-                return "redirect:/personnel/home";
+
+                List<Role> listRoles = service.getRoles();
+                List<Department> listDep = service.getDep();
+                List<User> listUser = userRepo.getUsersByDepartment(user.getDepartment());
+                System.out.println(listUser);
+                model.addAttribute("user",user);
+
+                model.addAttribute("listRoles",listRoles);
+                model.addAttribute("listDep", listDep);
+                model.addAttribute("listUser",listUser);
+                return "Pages/managerHome";
             }
         }
         return "redirect:/personnel/login";
@@ -98,5 +118,22 @@ public class UserController {
         return "redirect:/dashboard/home";
     }
 
+    @GetMapping(value = "/logout/admin")
+    private String logOutAdmin(HttpSession session){
+        session.setAttribute("loginAdmin",null);
+        return "redirect:/dashboard/login";
+    }
+
+    @GetMapping(value = "/logout/user")
+    private String logOutUser(HttpSession session){
+        session.setAttribute("loginUser",null);
+        return "redirect:/personnel/login";
+    }
+
+    @GetMapping(value = "/logout/manager")
+    private String logOutManager(HttpSession session){
+        session.setAttribute("loginManager",null);
+        return "redirect:/personnel/login";
+    }
 
 }
