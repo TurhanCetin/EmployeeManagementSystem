@@ -49,5 +49,8 @@ public class UserService {
         user.setPassword(user.getPassword());
         userRepo.save(user);
     }
+    public void delete(User user){
+        userRepo.delete(user);
+    }
 
 }

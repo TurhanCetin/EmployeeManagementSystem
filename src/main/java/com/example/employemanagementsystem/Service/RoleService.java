@@ -28,4 +28,10 @@ public class RoleService {
         roleRepo.deleteById(id);
 
     }
+    public Role get(Integer id){
+        return roleRepo.getById(id);
+    }
+    public void edit(Role role){
+        roleRepo.save(role);
+    }
 }

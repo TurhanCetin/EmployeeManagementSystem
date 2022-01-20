@@ -2,6 +2,7 @@ package com.example.employemanagementsystem.Controller;
 
 
 import com.example.employemanagementsystem.Model.Department;
+import com.example.employemanagementsystem.Model.Role;
 import com.example.employemanagementsystem.Service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,12 @@ public class DepartmentController {
     public String createDepartment(@ModelAttribute Department department ,RedirectAttributes redirectAttribute){
         service.saveDepartment(department);
         redirectAttribute.addFlashAttribute("message", "Department Was Created Successfully");
+        return "redirect:/dashboard/department";
+    }
+
+    @PostMapping("/department/edit")
+    public String editRole(Department department){
+        service.edit(department);
         return "redirect:/dashboard/department";
     }
     @RequestMapping("/dashboard/department/delete/{id}")

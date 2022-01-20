@@ -30,6 +30,12 @@ public class RoleController {
         return "redirect:/dashboard/role";
     }
 
+    @PostMapping("/role/edit")
+    public String editRole(Role role){
+        service.edit(role);
+        return "redirect:/dashboard/role";
+    }
+
     @RequestMapping("/dashboard/role/delete/{id}")
     public String deleteRole(@PathVariable Integer id, RedirectAttributes redirectAttributes){
         service.deleteRole(id);

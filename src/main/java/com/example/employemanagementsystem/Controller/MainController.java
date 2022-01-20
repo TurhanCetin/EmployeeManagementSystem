@@ -5,6 +5,8 @@ import com.example.employemanagementsystem.Model.Department;
 import com.example.employemanagementsystem.Model.Role;
 import com.example.employemanagementsystem.Model.User;
 import com.example.employemanagementsystem.Repository.UsersRepository;
+import com.example.employemanagementsystem.Service.DepartmentService;
+import com.example.employemanagementsystem.Service.RoleService;
 import com.example.employemanagementsystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,10 @@ public class MainController {
     public UserService service;
     @Autowired
     public UsersRepository userRope;
+    @Autowired
+    public RoleService roleService;
+    @Autowired
+    public DepartmentService depService;
 
     @GetMapping("")
     public String getHome(){
@@ -103,6 +109,23 @@ public class MainController {
 
 
         return "Dashboard/editPersonnelPage";
+    }
+
+    @GetMapping("/dashboard/department/edit/{id}")
+    public String editDepartment(@PathVariable("id") Integer id, Model model){
+
+        Department dep = depService.get(id);
+        model.addAttribute("dep" , dep);
+
+        return "Dashboard/editDepartmentPage";
+    }
+    @GetMapping("/dashboard/role/edit/{id}")
+    public String editRole(@PathVariable("id") Integer id, Model model){
+
+        Role role = roleService.get(id);
+        model.addAttribute("role",role);
+
+        return "Dashboard/editRolePage";
     }
 
     @GetMapping("/dashboard/department/create")

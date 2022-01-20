@@ -118,6 +118,13 @@ public class UserController {
         return "redirect:/dashboard/home";
     }
 
+    @GetMapping("/dashboard/personnel/delete/{id}")
+    public String deletePersonnel(@PathVariable("id") Integer id){
+        User user = service.get(id);
+        service.delete(user);
+        return "redirect:/dashboard/home";
+    }
+
     @GetMapping(value = "/logout/admin")
     private String logOutAdmin(HttpSession session){
         session.setAttribute("loginAdmin",null);
