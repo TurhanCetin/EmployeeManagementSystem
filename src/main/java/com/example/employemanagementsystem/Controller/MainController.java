@@ -4,6 +4,7 @@ package com.example.employemanagementsystem.Controller;
 import com.example.employemanagementsystem.Model.Department;
 import com.example.employemanagementsystem.Model.Role;
 import com.example.employemanagementsystem.Model.User;
+import com.example.employemanagementsystem.Repository.UsersRepository;
 import com.example.employemanagementsystem.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -22,6 +24,8 @@ public class MainController {
 
     @Autowired
     public UserService service;
+    @Autowired
+    public UsersRepository userRope;
 
     @GetMapping("")
     public String getHome(){
@@ -51,7 +55,8 @@ public class MainController {
         if(session.getAttribute("loginUser") != null){
             return "redirect:/user/home";
         }else if(session.getAttribute("loginManager") !=null){
-            return "Pages/managerHome";
+
+            return "redirect:/personnel/home";
         }
         List<Role> listRoles = service.getRoles();
         model.addAttribute("listRoles",listRoles);
@@ -68,7 +73,7 @@ public class MainController {
     @RequestMapping(value = "/dashboard/login",method=RequestMethod.GET)
     public String getManagerLogin(Model model, HttpSession session){
         if(session.getAttribute("loginAdmin") != null){
-            return "Dashboard/adminDashboard";
+            return "redirect:/dashboard/home";
         }
         model.addAttribute("LoginForm");
         return "Dashboard/login";
@@ -111,13 +116,5 @@ public class MainController {
         model.addAttribute("role", new Role());
         return "Dashboard/createRolePage";
     }
-
-    @GetMapping("/403")
-    public String invalidRequest(){
-
-        return "/Pages/403";
-    }
-
-
 
 }
